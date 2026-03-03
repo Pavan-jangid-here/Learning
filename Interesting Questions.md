@@ -95,3 +95,134 @@ Samples 201–300 → update θ
 
 ---
 
+
+# Why there is multiple iteration in Batch method? we are using full dataset at once, why then multiple iteration?
+
+## 1️⃣ What happens in Batch Gradient Descent
+
+In **Batch Gradient Descent**, we:
+
+- Use the **entire dataset**
+- Compute the **gradient (slope of the cost function)**
+- Update **θ (parameters)**
+- Repeat until the **cost is minimized**
+
+### Update Rule
+
+θ = θ − η * ∇J(θ)
+
+Where:
+
+- **θ** = model parameters  
+- **η (eta)** = learning rate  
+- **∇J(θ)** = gradient of the cost function  
+
+
+
+## 2️⃣ Why One Iteration Is Not Enough
+
+Imagine you're standing on a **hill** and trying to reach the **lowest point**.
+
+You:
+
+1. Check the **slope**
+2. Take **one step downward**
+3. Check the **slope again**
+4. Take **another step**
+
+You **cannot jump directly to the bottom**, because you don't know exactly where it is.
+
+Machine Learning works **the same way**. 🚶‍♂️📉
+
+The algorithm must **repeatedly adjust the parameters step by step** until it reaches the **minimum cost**.
+
+---
+# Tell me how does Stochastic and Mini Batch works then?
+
+
+## Epoch vs Iteration in Gradient Descent
+
+### What is an Epoch?
+An **epoch** means:
+
+> One complete pass through the entire training dataset.
+
+If the dataset has **1000 samples**, one epoch means the model has processed **all 1000 samples once**.
+
+---
+
+## Batch Gradient Descent
+
+Uses the **entire dataset at once** to compute the gradient and update parameters.
+
+- One update uses **all samples**
+- Therefore:
+```
+1 iteration = 1 epoch
+```
+
+Example:
+```
+Epoch 1 → use all data → update θ
+Epoch 2 → use all data → update θ
+Epoch 3 → use all data → update θ
+```
+
+
+---
+
+## Stochastic Gradient Descent (SGD)
+
+Updates the model **after every single training example**.
+
+If dataset = **1000 samples**
+```
+1000 iterations = 1 epoch
+```
+
+Example:
+
+```
+Update with sample 1
+Update with sample 2
+...
+Update with sample 1000
+```
+
+After sample 1000 → **1 epoch completed**
+
+---
+
+## Mini-Batch Gradient Descent
+
+Updates the model using **small batches of data**.
+
+Example:
+```
+Dataset size = 1000
+Batch size = 100
+
+1000 / 100 = 10 batches
+
+10 iterations = 1 epoch
+```
+
+
+---
+
+## Summary
+
+| Method | Iterations per Epoch |
+|------|------|
+| Batch Gradient Descent | 1 |
+| Stochastic Gradient Descent | Number of samples |
+| Mini-Batch Gradient Descent | Number of batches |
+
+---
+
+## Key Idea
+
+> Epoch = one full pass through dataset
+
+> Iteration = one parameter update
+
