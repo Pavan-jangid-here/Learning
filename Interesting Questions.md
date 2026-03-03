@@ -226,3 +226,26 @@ Batch size = 100
 
 > Iteration = one parameter update
 
+
+# Why need to pass target y in 1d using y.ravel() and why not X with ravel as well?
+
+Answer is Scikit learn expects the target in 1D hence ravel() and expects the X with some features, if we pass the X in 1D then it wont know how many features are there.
+
+## Learning Schedule in Mini-Batch Gradient Descent
+
+### Idea
+A **learning schedule** gradually **reduces the learning rate (η)** during training.
+
+Large learning rate at the start → **fast learning**  
+Small learning rate later → **stable convergence**
+
+---
+
+## Code
+```python
+t0, t1 = 200, 1000
+
+def learning_schedule(t):
+    return t0 / (t + t1)
+```
+
