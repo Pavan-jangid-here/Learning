@@ -249,3 +249,9 @@ def learning_schedule(t):
     return t0 / (t + t1)
 ```
 
+
+# How does matplotlib.pyplot.plt() works in terms of plotting the visuals?
+
+> If Single array passed to params then it will interally take the X as len(y)
+
+> If Two array passed the it will treat them as X and y.
